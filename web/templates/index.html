@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>SocialAlert: Monitoring Natural Disasters and Emergencies from Social Media</title>
+
+</head>
+<body>
+    <div class="container">
+        <h1 class="heading">:Monitoring Natural Disasters and Emergencies from social media</title>
+        <div class="input-container">
+            <input type="text" id="text-input" class="rounded" placeholder="Enter text to classify 🔎...">
+            <button id="classify-button" class="rounded">🔎</button>
+            <button id="random-button" class="rounded">🔀</button>
+            
+        </div>
+        <div id="categories" class="hidden">
+            <!-- Categories or random text will be displayed here -->
+        </div>
+        <h5 class="foot">Place holder for testing backend API, Name and design subject to change</h5>
+    </div>
+    
+    <script>
+        document.getElementById('classify-button').addEventListener('click', function () {
+            const text = document.getElementById('text-input').value;
+            
+            // Send a POST request to Flask to classify the text
+            fetch('/', {
+                method: 'POST',
+                body: new URLSearchParams({ 'text': text, 'action': 'classify' }),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                const categories = data.categories;
+                const categoriesDiv = document.getElementById('categories');
+                categoriesDiv.innerHTML = '';
+                categories.forEach(category => {
+                    const categoryDiv = document.createElement('div');
+                    categoryDiv.textContent = category;
+                    categoriesDiv.appendChild(categoryDiv);
+                });
+                categoriesDiv.classList.remove('hidden');
+            });
+        });
+
+        document.getElementById('random-button').addEventListener('click', function () {
+            // Send a POST request to Flask to perform the "Random" action
+            fetch('/', {
+                method: 'POST',
+                body: new URLSearchParams({ 'action': 'random' }),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                const categories = data.random_text;
+                const categoriesDiv = document.getElementById('categories');
+                categoriesDiv.innerHTML = '';
+                categories.forEach(category => {
+                    const categoryDiv = document.createElement('div');
+                    categoryDiv.textContent = category;
+                    categoriesDiv.appendChild(categoryDiv);
+                });
+                categoriesDiv.classList.remove('hidden');
+            });
+        });
+    </script>
+</body>
+</html>

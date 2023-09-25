@@ -1,0 +1,52 @@
+body {
+    font-family:"JetBrains Mono", monospace;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.input-container {
+    margin-bottom: 20px;
+}
+
+input.rounded, button.rounded {
+    border-radius: 30px; /* Increase border radius for rounder corners */
+    border: 2px solid rgb(152, 152, 192); /* Add a blue border */
+    padding: 20px; /* Increase padding to further increase box size */
+    font-size: 20px; /* Increase font size */
+    box-shadow: 4px 4px 8px #888888; /* Increase box shadow for a stronger effect */
+    max-height: 300px; /* Set a maximum height */
+    overflow-y: auto; /* Enable vertical scrolling when content exceeds max height */
+}
+
+/* Add a CSS transition for the categories */
+#categories {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Apply the fade-in effect when the 'hidden' class is removed */
+#categories:not(.hidden) {
+    opacity: 1;
+}
+
+/* Increase font size of categories */
+#categories div {
+    font-size: 24px; /* Adjust the font size as needed */
+}
+
+.heading, .foot {
+    font-family: "JetBrains Mono", monospace;
+}
+
+.heading::before {
+    content: "SocialAlert";
+    background-color: red;
+    color: whitesmoke;
+}

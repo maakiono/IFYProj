@@ -64,11 +64,11 @@ class StartingNounExtractor(BaseEstimator, TransformerMixin):
 
 class Classifier():
     def __init__(self) -> None:
-        engine = create_engine('sqlite:///./data/DisasterResponse.db')
+        engine = create_engine('sqlite:///classifier_model/data/DisasterResponse.db')
         self.datadf = pd.read_sql_table('DisasterResponseTable', engine)
         self.categories = self.datadf.columns[4:]
         self.rowcount = len(self.datadf.index)
-        self.model = joblib.load("./model/classifier.pkl")
+        self.model = joblib.load("classifier_model/model/classifier.pkl")
 
     def classifyraw(self,query:str):
         return self.model.predict([query])[0]

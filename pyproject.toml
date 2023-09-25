@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "ify-project"
+name = "Natural D"
 version = "0.1.0"
 description = ""
 authors = ["Hemanth Nandipati <maaki@duck.com>"]
@@ -14,6 +14,7 @@ praw = "^7.7.1"
 tweepy = "^4.14.0"
 sqlalchemy = "^2.0.21"
 xgboost = "^2.0.0"
+flask = "^2.3.3"
 
 
 [build-system]
