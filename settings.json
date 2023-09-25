@@ -1,0 +1,16 @@
+{
+    "reddit":{
+        "client_id":"dummy",
+        "client_secret":"dummy",
+        "username":"dummy",
+        "password":"dummy",   
+        "user_agent":"dummy"
+    },
+    "twitter":{
+        "consumer_key":"dummy",
+        "consumer_secret":"dummy",
+        "access_token":"dummy",
+        "access_token_secret":"dummy",
+        "news_keywords":"dummy"
+    }
+}
