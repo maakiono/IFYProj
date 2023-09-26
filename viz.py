@@ -1,11 +1,10 @@
 from flask import Flask, render_template, request, jsonify
 from classifier_model.modlib import *
-import os
 
 model = Classifier()
 template_dir = "web/templates"
 static_dir = "web/static"
-app = Flask(__name__,template_folder=template_dir,static_folder=static_dir)
+app = Flask(__name__,template_folder=template_dir,static_folder=static_dir,host='0.0.0.0',port=8001)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -30,4 +29,6 @@ def classify_text(text):
     return lisf
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    import warnings
+    warnings.filterwarnings("ignore")
+    app.run(debug=False)
