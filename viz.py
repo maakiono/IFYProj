@@ -4,7 +4,7 @@ from classifier_model.modlib import *
 model = Classifier()
 template_dir = "web/templates"
 static_dir = "web/static"
-app = Flask(__name__,template_folder=template_dir,static_folder=static_dir,host='0.0.0.0',port=8001)
+app = Flask(__name__,template_folder=template_dir,static_folder=static_dir,port=8001)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
